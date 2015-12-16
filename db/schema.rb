@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216191535) do
+ActiveRecord::Schema.define(version: 20151216202643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20151216191535) do
     t.integer  "cat_files"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "links", primary_key: "cl_from", force: :cascade do |t|
+    t.string   "cl_to"
+    t.binary   "cl_sortkey"
+    t.date     "cl_timestamp"
+    t.binary   "cl_sortkey_prefix"
+    t.binary   "cl_collation"
+    t.string   "cl_type"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
